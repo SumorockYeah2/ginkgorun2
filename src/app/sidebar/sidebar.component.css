@@ -1,0 +1,12 @@
+.sidenav-container {
+    display: flex;
+    height: 100%;
+}
+
+.sidenav {
+    width: 250px;
+}
+
+.content {
+    flex: 1;
+}

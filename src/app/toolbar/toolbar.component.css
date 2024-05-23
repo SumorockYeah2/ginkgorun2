@@ -1,0 +1,14 @@
+.title {
+    font-weight: bold;
+    margin-left: 16px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
+      <!-- Sidebar content goes here -->
+      <mat-list role="list">
+        <mat-list-item>Dashboard</mat-list-item>
+        <mat-list-item>Timesheet</mat-list-item>
+        <mat-list-item>Leave</mat-list-item>
+        <mat-list-item>Holiday</mat-list-item>
+        <mat-list-item>Calendar</mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <!-- Main content goes here -->
+      <app-content-dashboard></app-content-dashboard>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
