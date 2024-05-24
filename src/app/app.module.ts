@@ -18,13 +18,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ToolbarComponent,
     SidebarComponent,
     ContentDashboardComponent,
     BarChartComponent
-  ],
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
