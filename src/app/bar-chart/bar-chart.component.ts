@@ -40,7 +40,7 @@ export class BarChartComponent implements OnInit {
       }
     };
   }
-  
+
 }
 
 

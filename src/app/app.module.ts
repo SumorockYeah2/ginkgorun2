@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { StackedColumnsChartComponent } from './stacked-columns-chart/stacked-columns-chart.component';
 
 @NgModule({
   declarations: [	
@@ -23,7 +24,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ToolbarComponent,
     SidebarComponent,
     ContentDashboardComponent,
-    BarChartComponent
+    BarChartComponent,
+    StackedColumnsChartComponent
    ],
   imports: [
     BrowserModule,
