@@ -1,10 +1,35 @@
 <mat-toolbar color="primary">
-    <div class="logo-placeholder">
-      <!-- Placeholder for the logo -->
-      <!-- <img src="" alt="Logo"/> -->
-    </div>
-    <span class="title">Dashboard</span>
-    <span class="spacer"></span>
+  <div class="logo-placeholder">
+    <!-- Placeholder for the logo -->
+    <!-- <img src="" alt="Logo"/> -->
+  </div>
+  <span class="title">Dashboard</span>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="appsMenu">
     <span class="material-icons">apps</span>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="accountMenu">
     <span class="material-icons">account_circle</span>
-  </mat-toolbar>
+  </button>
+</mat-toolbar>
+
+<mat-menu #appsMenu="matMenu">
+  <a mat-menu-item href="https://etaxapp.getinvoice.net/">
+    <img src="./img/getInvoice_Logo.png" alt="getInvoice">
+  </a>
+  <a mat-menu-item href="https://app.zdox.net/">
+    <img src="./img/zDOX_Logo.png" alt="zDOX">
+  </a>
+  <a mat-menu-item href="https://app.gestampduty.com/">
+    <img src="./img/gestampduty_Logo.png" alt="GeStamp Duty">
+  </a>
+</mat-menu>
+
+<mat-menu #accountMenu="matMenu">
+  <img src="./img/User-Profile-512.png">
+  <p class="profile-name">XXXX XXXX</p>
+  <p>xxx@ginkgosoft.co.th</p>
+  <p>Admin</p>
+  <button mat-menu-item>Settings</button>
+  <button mat-menu-item>Logout</button>
+</mat-menu>

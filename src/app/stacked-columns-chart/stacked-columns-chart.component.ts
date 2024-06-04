@@ -30,25 +30,22 @@ export type ChartOptions = {
 export class StackedColumnsChartComponent {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
+  public selectedYear: string = "notselected"; 
 
   constructor() {
     this.chartOptions = {
       series: [
         {
-          name: "PRODUCT A",
-          data: [44, 55, 41, 67, 22, 43]
+          name: "Working Days",
+          data: null
         },
         {
-          name: "PRODUCT B",
-          data: [13, 23, 20, 8, 13, 27]
+          name: "Days Attended",
+          data: null
         },
         {
-          name: "PRODUCT C",
-          data: [11, 17, 15, 15, 21, 14]
-        },
-        {
-          name: "PRODUCT D",
-          data: [21, 7, 25, 13, 22, 8]
+          name: "Leaves",
+          data: null
         }
       ],
       chart: {
@@ -81,13 +78,19 @@ export class StackedColumnsChartComponent {
       },
       xaxis: {
         type: "category",
-        categories: [
-          "01/2011",
-          "02/2011",
-          "03/2011",
-          "04/2011",
-          "05/2011",
-          "06/2011"
+        categories: [ //call a function which returns an array, instead of entering default values
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
         ]
       },
       legend: {
@@ -100,4 +103,43 @@ export class StackedColumnsChartComponent {
     };
   }
   
+  updateChartData(selectedYear: any): void {
+    this.selectedYear = selectedYear;
+
+    const dataFor2024 = {
+      "Working Days": [21,19,21,19,21,0,0,0,0,0,0,18], // this has to be subtracted by days checked in
+      "Days Attended": [15, 14, 16, 18, 17,0,0,0,0,0,0,0],
+      "Leaves": [0.5, 0, 0, 1, 0,0,0,0,0,0,0,5]
+    };
+    const dataFor2023 = {
+      "Working Days": [20,19,21,16,20,21,20,20,21,20,22,18],
+      "Days Attended": [14, 15, 13, 14, 12, 16,14, 15, 13, 14, 12, 16],
+      "Leaves": [0, 0, 1, 0, 0, 0,0, 0, 1, 0, 0, 0]
+    };
+
+    switch(selectedYear) {
+      case 'option1':
+        this.chartOptions.series = [
+          { name: "Working Days", data: this.subtractDays(dataFor2024["Working Days"], dataFor2024["Days Attended"], dataFor2024["Leaves"]) },
+          { name: "Days Attended", data: dataFor2024["Days Attended"] },
+          { name: "Leaves", data: dataFor2024["Leaves"] }
+        ];
+        break;
+      case 'option2':
+        this.chartOptions.series = [
+          { name: "Working Days", data: this.subtractDays(dataFor2023["Working Days"], dataFor2023["Days Attended"], dataFor2023["Leaves"]) },
+          { name: "Days Attended", data: dataFor2023["Days Attended"] },
+          { name: "Leaves", data: dataFor2023["Leaves"] }
+        ];
+        break;
+    }
+  }
+
+  subtractDays(workingDays: number[], daysAttended: number[], daysLeft: number[]): number[] {
+    const remainingDays: number[] = [];
+    for (let i = 0; i < workingDays.length; i++) {
+      remainingDays.push(workingDays[i] - daysAttended[i] - daysLeft[i]);
+    }
+    return remainingDays;
+  }
 }

@@ -1,14 +1,13 @@
 <div class="view-dropdown">
     <mat-label>View: </mat-label>
     <mat-form-field appearance="fill">
-      <mat-select matNativeControl required>
-        <mat-option value="notselected">Select Year</mat-option>
+      <mat-select matNativeControl (selectionChange)="onChange($event)" required>
         <mat-option value="option1">2024</mat-option>
         <mat-option value="option2">2023</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-  
+
 <div class="stats">
   <div>
     <p>Vacation</p>
@@ -25,3 +24,4 @@
 </div>
 <!-- <app-bar-chart></app-bar-chart> -->
 <app-stacked-columns-chart></app-stacked-columns-chart>
+<app-calendar></app-calendar>

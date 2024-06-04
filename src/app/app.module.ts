@@ -14,9 +14,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { StackedColumnsChartComponent } from './stacked-columns-chart/stacked-columns-chart.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [	
@@ -25,7 +32,8 @@ import { StackedColumnsChartComponent } from './stacked-columns-chart/stacked-co
     SidebarComponent,
     ContentDashboardComponent,
     BarChartComponent,
-    StackedColumnsChartComponent
+    StackedColumnsChartComponent,
+    CalendarComponent
    ],
   imports: [
     BrowserModule,
@@ -35,7 +43,11 @@ import { StackedColumnsChartComponent } from './stacked-columns-chart/stacked-co
     MatListModule,
     MatFormFieldModule,
     MatSelectModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    MatMenuModule,
+    AppRoutingModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
